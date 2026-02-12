@@ -29,7 +29,7 @@ graph TD
     G --> H[Gap Interpolation & Outlier Removal]
     H --> I[Analyze Dedup Trends]
     I --> J["Fit Models (Linear + Quadratic)"]
-    J --> K[Statistical Significance Test (p-value)]
+    J --> K["Statistical Significance Test (p-value)"]
     K -- "p < 0.05" --> L[Select Quadratic]
     K -- "p >= 0.05" --> M[Select Linear]
     L --> N["Solve for Thresholds (80/90/100%)"]

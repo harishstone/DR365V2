@@ -1,5 +1,6 @@
-# Exclude only these two folders
-DOCS/
+# Exclude folders except IMPLEMENTATION in DOCS
+DOCS/*
+!DOCS/IMPLEMENTATION/
 Stonefusion/
 
 # Environment and secrets

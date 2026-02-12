@@ -126,9 +126,9 @@ For StoneFusion integration, ensure the following variables are set in `.env`:
 
 ```ini
 # StoneFusion (Feature 13)
-STONEFLY_URL=https://100.100.100.192
-STONEFLY_USER=demo
-STONEFLY_PASS=W@tch1ng
+STONEFLY_URL=https://your_stonefly_url
+STONEFLY_USER=your_stonefly_user
+STONEFLY_PASS=your_stonefly_password
 ```
 
 ---

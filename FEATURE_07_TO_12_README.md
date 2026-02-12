@@ -63,6 +63,28 @@ DR365V2/
 
 ---
 
+## 1.3 Environment Setup
+
+Create or update `c:\DR365\DR365V2\.env` with the following for Wazuh integration (Features 7-12):
+
+```ini
+# Wazuh Configuration
+WAZUH_HOST=your_wazuh_host
+WAZUH_API_USER=your_api_user
+WAZUH_API_PASSWORD=your_api_password
+WAZUH_DASHBOARD_USER=your_dashboard_user
+WAZUH_DASHBOARD_PASSWORD=your_dashboard_password
+
+# PostgreSQL Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=dr365v_metrics
+DB_USER=postgres
+DB_PASSWORD=your_db_password
+```
+
+---
+
 ## 2. SHARED INFRASTRUCTURE
 
 All features rely on a verified, robust shared infrastructure to communicate with the secure environment.

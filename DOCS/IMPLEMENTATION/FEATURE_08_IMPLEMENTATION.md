@@ -20,7 +20,7 @@ graph TD
     C -- Skip --> D[Return Unmodified]
     C -- Proceed --> E{Apply Business Context}
     
-    E --> F[Check Server Criticality (Config)]
+    E --> F["Check Server Criticality (Config)"]
     E --> G[Check User Role (Config)]
     E --> H[Check Time of Day (Timezone Aware)]
     E --> I[Check Patch Status (Wazuh Indexer)]

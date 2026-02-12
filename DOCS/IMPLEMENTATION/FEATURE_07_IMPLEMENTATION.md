@@ -29,7 +29,7 @@ graph TD
     end
     
     subgraph Wazuh API
-        E --> H[Get Processes (Syscollector)]
+        E --> H["Get Processes (Syscollector)"]
     end
     
     F --> I[Analysis Engine]

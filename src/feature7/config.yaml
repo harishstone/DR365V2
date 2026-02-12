@@ -1,0 +1,25 @@
+
+wazuh:
+  # Host is now loaded from .env (WAZUH_HOST) by default, 
+  # but can be overridden here if needed.
+  host: "" 
+  
+  # Standard API (Port 55000)
+  api:
+    enabled: true
+    port: 55000
+    # Credentials loaded from .env: WAZUH_API_USER / WAZUH_API_PASSWORD
+    user: ""
+    password: ""
+    
+  # Dashboard Proxy (Port 443)
+  dashboard:
+    enabled: true
+    port: 443
+    # Credentials loaded from .env: WAZUH_DASHBOARD_USER / WAZUH_DASHBOARD_PASSWORD
+    user: ""
+    password: ""
+    
+  # Thresholds for Feature 7
+  alert_level_threshold: 10
+  lookback_hours: 24

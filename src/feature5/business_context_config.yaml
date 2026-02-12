@@ -1,0 +1,55 @@
+feature_5:
+  risk_score_weights:
+    job_failure_weight: 0.25
+    capacity_weight: 0.25
+    efficiency_weight: 0.15
+    recovery_weight: 0.20
+    data_quality_weight: 0.15
+
+  risk_thresholds:
+    job_failure_risk_score_threshold: 50
+    capacity_days_threshold: 60
+    efficiency_score_threshold: 60
+    rto_confidence_threshold: "MODERATE"
+    data_quality_risk_threshold: 30
+    anomaly_count_threshold: 2
+
+  data_freshness_requirements:
+    feature_1_max_age_hours: 24
+    feature_2_max_age_hours: 24
+    feature_3_max_age_hours: 24
+    feature_4_max_age_hours: 24
+    alert_on_staleness: true
+
+  vm_tier_classification:
+    default_tier: "MEDIUM"
+    tier_definitions:
+      CRITICAL:
+        weight: 1.0
+        patterns:
+          - "^PROD-"
+          - "SQL-PROD"
+          - "ERP"
+          - "Critical"
+      HIGH:
+        weight: 0.75
+        patterns:
+          - "^APP-"
+          - "Exchange"
+          - "Finance"
+      MEDIUM:
+        weight: 0.50
+        patterns:
+          - "^DEV-"
+          - "FileServer"
+          - "General"
+      LOW:
+        weight: 0.25
+        patterns:
+          - "^TEST-"
+          - "Archive"
+          - "Temp"
+    manual_overrides:
+      "backup-job-special-01":
+        tier: "CRITICAL"
+        reason: "Executive requirement"

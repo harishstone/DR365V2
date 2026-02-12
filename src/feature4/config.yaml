@@ -1,0 +1,50 @@
+veeam:
+  # Credentials loaded from .env
+  api_url: ""
+  username: ""
+  password: ""
+  request_timeout: 30
+
+database:
+  # Credentials loaded from .env
+  host: ""
+  port: 5432
+  database: ""
+  user: ""
+  password: ""
+
+feature4:
+  min_successful_tests: 5
+  max_test_age_days: 90
+  
+  surebackup:
+    enabled: true
+    script_path: "get_surebackup_results.ps1"
+    timeout_seconds: 300
+    reject_symlinks: true
+    confidence_weight: 0.3
+  
+  confidence_high:
+    min_tests: 10
+    max_age_days: 30
+    min_success_rate: 0.95
+  
+  confidence_moderate:
+    min_tests: 5
+    max_age_days: 90
+    min_success_rate: 0.80
+  
+  rto_percentiles: [50, 90, 95]
+  
+  sla_at_risk_buffer: 0.20
+  
+  component_weights:
+    test_success_rate: 0.30
+    test_recency: 0.25
+    rto_predictability: 0.20
+    sla_compliance: 0.15
+    test_coverage: 0.10
+
+logging:
+  level: "INFO"
+  file: "feature4.log"

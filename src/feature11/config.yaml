@@ -1,0 +1,37 @@
+
+feature11:
+  # Wazuh Agent Group targeting Backup Infrastructure
+  # Ensure your backup servers (Veeam, Repositories, Proxies) are in this group.
+  backup_agent_group: "backup-servers"
+  
+  # Scan Parameters
+  time_window_hours: 24
+  
+  # Risk Scoring Weights
+  weights:
+    base_score: 20
+    sca_failure_penalty: 5
+    cvss_critical_penalty: 25
+    cvss_high_penalty: 15
+    max_score: 100
+
+  # SCA Policy Scoping
+  # Only consider SCA checks from this policy to avoid noise
+  sca_policy_name: "Backup Hardening Policy"
+
+  # Critical Paths for FIM Validation (Optional - Documentation only)
+  critical_fim_paths:
+    - "/etc/backup.conf"
+    - "C:\\Backup\\catalog.db"
+
+wazuh:
+  api:
+    host: "100.100.100.27"
+    port: 55000
+    protocol: "https"
+    verify_ssl: false
+  indexer:
+    host: "100.100.100.27"
+    port: 9200
+    protocol: "https"
+    verify_ssl: false

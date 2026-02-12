@@ -1,0 +1,25 @@
+wazuh:
+  # Standard connection details (loaded from env)
+  host: ""
+  api:
+    enabled: true
+    port: 55000
+  dashboard:
+    enabled: true
+    port: 443
+
+feature9:
+  # Time Window Tuning
+  # Lookback before detection start
+  pre_window_minutes: 60
+  
+  # Lookforward after detection end
+  post_window_minutes: 30
+  
+  # Pagination limit (Safety break for loops)
+  max_events_fetch: 10000
+  
+  # Lateral Movement Signatures
+  lateral_movement_rules:
+    mitre_ids: ["T1021"]
+    descriptions: ["SMB session", "RDP connection"]

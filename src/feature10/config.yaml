@@ -1,0 +1,79 @@
+
+feature10:
+  # Role-Based Access Control for Phases
+  role_permissions:
+    SOC:
+      - "Immediate Containment"
+      - "Forensic Preservation"
+      - "Credential Rotation"
+      - "Recovery Guidance"
+      - "Lateral Movement Check"
+    Finance:
+      - "Immediate Containment" # Only high-level phases
+      - "Recovery Guidance"
+      - "Business Impact"
+
+  # Playbook Phases & Actions
+  phases:
+    immediate_containment:
+      title: "Immediate Containment"
+      description: "Prevent further spread and damage to the network."
+      actions:
+        network_isolation:
+          name: "Network Isolation"
+          priority: "CRITICAL"
+          soar_id_template: "SOAR_PLAYBOOK_ID: isolate_host_{ip}"
+        
+    forensic_preservation:
+      title: "Forensic Preservation"
+      description: "Preserve volatile evidence for incident response."
+      actions:
+        memory_dump_windows:
+          name: "Capture Memory Dump (Windows)"
+          tool: "DumpIt.exe or WinPmem"
+          note: "DO NOT reboot before capture."
+        memory_dump_linux:
+          name: "Capture Volatility Profile (Linux)"
+          tool: "LiME or AVML"
+          note: "Preserve /proc/kcore"
+
+    credential_rotation:
+      title: "Credential Rotation"
+      description: "Reset credentials for potentially compromised accounts (T1003 Detected)."
+      actions:
+        rotate_service_accounts:
+          name: "Rotate Service Accounts"
+          note: "All service accounts that logged into this host."
+        force_password_reset:
+          name: "Force Password Reset"
+          target: "Domain Users"
+          note: "For users who accessed this host in last 7 days."
+
+    recovery_guidance:
+      title: "Recovery Guidance"
+      description: "Restore operations safely after containment."
+      actions:
+        validate_backup:
+          name: "Validate Backup Integrity"
+          note: "Verify backup was taken before 'first_seen' timestamp."
+        patch_vulnerabilities:
+          name: "Patch Vulnerabilities"
+          target: "All Affected Hosts"
+          note: "Address root cause before restoration."
+
+  # CMDB Settings (Simulation/Placeholder)
+  cmdb:
+    demo_mappings:
+      # These mimic a real CMDB response
+      "FILESERVER-03": 
+        ip: "192.168.1.50"
+        os: "windows"
+        tier: 1
+      "WEB-SERVER-01":
+        ip: "192.168.1.60"
+        os: "linux"
+        tier: 2
+      "WIN-LSEFVDVVGRA":
+        ip: "100.100.100.133"
+        os: "windows"
+        tier: 3

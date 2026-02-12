@@ -1,0 +1,108 @@
+veeam:
+
+  # Credentials loaded from .env
+
+  api_url: ""
+
+  username: ""
+
+  password: ""
+
+
+
+database:
+
+  # Credentials loaded from .env
+
+  host: ""
+
+  port: 5432
+
+  database: ""
+
+  user: ""
+
+  password: ""
+
+
+
+feature3:
+
+  min_sessions: 30
+
+  
+
+  # Deduplication thresholds
+
+  dedup_excellent: 3.5
+
+  dedup_good: 2.5
+
+  dedup_fair: 1.5
+
+  
+
+  # Compression thresholds
+
+  compression_excellent: 2.0
+
+  compression_good: 1.8
+
+  compression_fair: 1.3
+
+  
+
+  # Anomaly detection
+
+  anomaly_threshold_sigma: 3.0
+
+  anomaly_drop_threshold: 0.20
+
+  
+
+  # Trend analysis
+
+  trend_pvalue_threshold: 0.05
+
+  trend_improving_threshold: 0.10
+
+  trend_degrading_threshold: -0.10
+
+  
+
+  # Scoring weights
+
+  component_weights:
+
+    dedup: 0.30
+
+    compression: 0.25
+
+    trend: 0.20
+
+    consistency: 0.15
+
+    anomaly: 0.10
+
+  
+
+  # Optimization targets
+
+  target_dedup_ratio: 2.5
+
+  target_compression_ratio: 1.8
+
+  
+
+  # Cost estimation
+
+  storage_cost_per_tb_year: 100
+
+  
+
+  # PowerShell integration
+
+  powershell_script: "get_efficiency_data.ps1"
+
+  days_back: 30
+

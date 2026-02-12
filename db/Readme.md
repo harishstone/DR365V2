@@ -1,0 +1,1 @@
+This Folder has just sql file of database, actual database path is a default path of postgre sql of system

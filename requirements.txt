@@ -1,0 +1,134 @@
+# DR365V2 - Complete Python Dependencies
+# All requirements for Features 1-6
+# Install with: pip install -r requirements.txt
+
+# ============================================================================
+# CORE DEPENDENCIES (All Features)
+# ============================================================================
+
+# HTTP Client & API
+requests>=2.28.0              # Veeam REST API client
+
+# Database
+psycopg2-binary>=2.9.0        # PostgreSQL database driver
+
+# Date/Time Utilities
+python-dateutil>=2.8.2        # Date/time parsing and calculations
+
+# Configuration & Security
+pyyaml>=6.0                   # YAML config file parsing
+cryptography>=41.0.0          # Credential encryption (AES-256)
+
+# ============================================================================
+# SCIENTIFIC & STATISTICAL LIBRARIES (Features 2, 3, 4, 5)
+# ============================================================================
+
+# Numerical Computing
+numpy>=1.23.0                 # Array operations, percentiles, statistical calculations
+
+# Data Analysis
+pandas>=1.5.0                 # Time series analysis, data manipulation
+
+# Statistical Functions
+scipy>=1.9.0                  # Confidence intervals, t-tests, statistical significance
+
+# ============================================================================
+# TEMPLATE ENGINE (Feature 6)
+# ============================================================================
+
+# Template Rendering
+jinja2>=3.0.0                 # Template engine for guidance plan generation
+markupsafe>=2.1.0             # Safe string handling in templates
+
+# ============================================================================
+# LOGGING & MONITORING (All Features)
+# ============================================================================
+
+# Structured Logging
+python-json-logger>=2.0.0     # Structured JSON logging for production
+
+# ============================================================================
+# TESTING & QUALITY ASSURANCE
+# ============================================================================
+
+# Testing Framework
+pytest>=7.0.0                 # Unit test framework
+pytest-cov>=4.0.0             # Test coverage reporting
+requests-mock>=1.9.0          # Mock HTTP responses for Veeam API testing
+
+# ============================================================================
+# OPTIONAL DEPENDENCIES
+# ============================================================================
+
+# Code Quality (Optional but recommended)
+# black>=23.0.0               # Code formatter
+# flake8>=6.0.0               # Linter
+# mypy>=1.0.0                 # Type checker
+
+# Documentation (Optional)
+# sphinx>=6.0.0               # Documentation generator
+# sphinx-rtd-theme>=1.2.0     # Read the Docs theme
+
+# ============================================================================
+# FEATURE-SPECIFIC NOTES
+# ============================================================================
+
+# Feature 1: Health Metrics & Scoring
+#   - requests, psycopg2-binary, python-dateutil, pyyaml, cryptography
+#   - python-json-logger
+
+# Feature 2: Capacity Forecasting
+#   - All Feature 1 dependencies PLUS:
+#   - numpy (polynomial regression, percentiles)
+#   - scipy (confidence intervals, statistical tests)
+#   - pandas (time series analysis)
+
+# Feature 3: Storage Efficiency Analysis
+#   - All Feature 1 dependencies PLUS:
+#   - numpy (z-score calculations, anomaly detection)
+#   - scipy (t-tests for trend analysis)
+#   - pandas (data manipulation)
+
+# Feature 4: Recovery Verification & RTO
+#   - All Feature 1 dependencies PLUS:
+#   - numpy (RTO percentile calculations)
+#   - scipy (confidence intervals for RTO)
+#   - pandas (time series RTO analysis)
+
+# Feature 5: Advanced Risk Analysis
+#   - All Feature 1 dependencies PLUS:
+#   - numpy (risk score calculations)
+#   - pandas (data aggregation across features)
+#   - scipy (statistical analysis)
+
+# Feature 6: Actionable Recommendations
+#   - All Feature 1 dependencies PLUS:
+#   - jinja2 (template rendering for guidance plans)
+#   - markupsafe (template safety)
+#   - numpy, pandas, scipy (pattern analysis)
+
+# ============================================================================
+# INSTALLATION INSTRUCTIONS
+# ============================================================================
+
+# Install all dependencies globally (no virtual environment):
+#   pip install -r requirements.txt
+
+# Verify installation:
+#   pip list | grep -E "requests|psycopg2|numpy|scipy|pandas|jinja2|pytest"
+
+# Check versions:
+#   python -c "import numpy; print(f'NumPy: {numpy.__version__}')"
+#   python -c "import scipy; print(f'SciPy: {scipy.__version__}')"
+#   python -c "import pandas; print(f'Pandas: {pandas.__version__}')"
+
+# ============================================================================
+# SYSTEM REQUIREMENTS
+# ============================================================================
+
+# Python: 3.9+
+# PostgreSQL: 12+
+# PowerShell: 5.1+ (for Feature 4 SureBackup integration)
+# Operating System: Windows/Linux
+# RAM: 1+ GB available
+# Disk Space: 500+ MB for dependencies

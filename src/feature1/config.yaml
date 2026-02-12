@@ -1,0 +1,28 @@
+veeam:
+  # Credentials loaded from .env (VEEAM_SERVER, VEEAM_USERNAME, VEEAM_PASSWORD)
+  api_url: ""
+  username: ""
+  password: ""
+
+database:
+   # Credentials loaded from .env (DB_HOST, DB_USER, DB_PASSWORD, etc)
+  host: ""
+  port: 5432
+  database: ""
+  user: ""
+  password: ""
+
+feature1:
+  history_days: 90
+  min_sessions: 30
+  min_frequency: 0.33  # sessions per day
+  max_variance: 0.50
+  max_single_job_pct: 0.80
+  cache_ttl_hours: 12
+  
+  component_weights:
+    failure_rate: 0.35
+    trend: 0.25
+    pattern: 0.20
+    protected_objects: 0.10
+    repository: 0.10

@@ -1,0 +1,58 @@
+wazuh:
+  # Credentials loaded from .env (and shared connector)
+  # Host loaded from .env or default here
+  host: ""
+  api:
+    enabled: true
+    port: 55000
+    user: ""      # Loaded from env
+    password: ""  # Loaded from env
+  dashboard:
+    enabled: true
+    port: 443
+    user: ""      # Loaded from env
+    password: ""  # Loaded from env
+
+feature8:
+  # 1. Server Criticality Map (Hostname -> Tier)
+  # Tier 1: Critical (Biz Critical, DBs, Domain Controllers)
+  # Tier 2: Important (Web Servers, App Servers)
+  # Tier 3: Standard (Workstations, Dev)
+  server_criticality:
+    "WIN-LSEFVDVVGRA": 1
+    "Veeam-HQ": 1
+    "DB-PRIMARY": 1
+    "FILESERVER-03": 1
+    "WEB-SERVER-01": 2
+    "WIN-96A9SFR65FN": 3
+    "WIN-NE62R1BUQI9": 2
+
+  # 2. User Role Profiles (Username -> Role)
+  # specific roles trigger higher risk scoring (Finance, HR, Admin)
+  user_role_profiles:
+    "administrator": "Admin"
+    "j.smith": "Finance"
+    "a.khan": "HR"
+    "svc_backup": "Service Account"
+    "system": "System"
+
+  # 3. Agent Timezones (Agent ID -> IANA Timezone)
+  # Used to determine "Off-Hours" activity
+  agent_timezones:
+    "006": "America/Los_Angeles" # WIN-LSEFVDVVGRA
+    "001": "UTC"
+    "009": "Europe/London" # Veeam-HQ
+    "002": "Asia/Tokyo"
+
+  # 4. Scoring Weights (Additive)
+  weights:
+    tier_1: 20
+    tier_2: 10
+    high_impact_role: 15
+    off_hours: 15
+    unpatched: 10
+    
+  # 5. Thresholds
+  min_confidence_to_process: 70
+  business_hours_start: 9
+  business_hours_end: 17

@@ -1,0 +1,57 @@
+# FEATURE 6 CONFIGURATION FILE
+# Remediation Planning & Guidance System (NO EXECUTION)
+
+feature_6:
+  enabled: true
+  execution_mode: "planning_only"  # planning_only | disabled
+  max_plans_per_execution: 20      # Limit plans generated per run
+  
+  # SAFETY GUARANTEES (CRITICAL - DO NOT MODIFY)
+  safety:
+    no_execution_guarantee: true           # NEVER execute changes
+    guidance_not_prescription: true        # Suggest approaches, not values
+    human_review_required: true            # All plans require human execution
+    read_only_api_only: true              # Only read-only API calls
+  
+  # VEEAM API INTEGRATION (OPTIONAL - DISABLED BY DEFAULT)
+  veeam_api:
+    enabled: false                         # Enable for enhanced context
+    read_only: true                        # ALWAYS true
+    # api_url loaded from .env
+    api_url: ""
+    timeout_seconds: 30
+    max_retries: 2
+  
+  # DATABASE CONFIGURATION
+  database:
+    # Credentials loaded from .env
+    host: ""
+    port: 5432
+    database: ""
+    user: ""
+    password: ""
+  
+  # RISK FILTERING
+  risk_filtering:
+    min_risk_score: 40                    # Only generate plans for risks >= 40
+    urgency_levels: ["HIGH", "MEDIUM"]    # Focus on high/medium urgency
+    max_plans_per_execution: 50           # Limit plans per run
+    confidence_threshold: "MODERATE"      # Minimum confidence level
+  
+  # PLAN GENERATION
+  plan_generation:
+    investigation_steps_count: 3          # Number of investigation priorities
+    remediation_options_count: 3          # Number of options to provide
+    include_historical_patterns: false    # Use historical effectiveness data
+    estimate_effort: true                 # Estimate effort hours
+    estimate_complexity: true             # Estimate complexity level
+  
+  # OUTPUT
+  output:
+    store_in_database: true               # Always store in DB
+    database_retention_days: 365
+  
+  # LOGGING
+  logging:
+    level: "INFO"
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

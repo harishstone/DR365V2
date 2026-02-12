@@ -1,0 +1,50 @@
+veeam:
+  # Credentials loaded from .env
+  api_url: ""
+  username: ""
+  password: ""
+
+database:
+  # Credentials loaded from .env
+  host: ""
+  port: 5432
+  database: ""
+  user: ""
+  password: ""
+
+feature2:
+  # Data Quality
+  min_days: 14
+  min_frequency: 0.9
+  max_gap_days: 2
+  outlier_threshold: 3.0
+  
+  # Forecasting Models
+  models:
+    linear: true
+    quadratic: true
+    exponential: false # Not yet implemented
+
+  # Confidence Classification (from EXACT SPECIFICATIONS)
+  r_squared_high: 0.90
+  r_squared_moderate: 0.70
+
+  # Statistical Significance
+  p_value_threshold: 0.05
+
+  # Deduplication Thresholds
+  dedup_improving_threshold: 0.2       # Ratio improvement
+  dedup_degrading_threshold: -0.2      # Ratio degradation
+  dedup_improving_adjustment: 0.95     # Reduce growth by 5%
+  dedup_degrading_adjustment: 1.05     # Increase growth by 5%
+  dedup_stable_adjustment: 1.0
+
+  # Procurement Alignment (Priority Classification)
+  procurement_lead_time_days: 30
+  urgent_threshold_days: 14
+  high_threshold_days: 30
+  medium_threshold_days: 60
+
+logging:
+  level: INFO
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'

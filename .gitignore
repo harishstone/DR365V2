@@ -42,3 +42,7 @@ Thumbs.db
 # IDE files
 .vscode/
 .idea/
+
+check_db.py
+check_recovery_db.py
+check_risk_db.py

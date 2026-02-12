@@ -96,7 +96,7 @@ graph TD
     end
 
     subgraph "Integration Layer"
-        MCP[MCP Server (src/mcp_server.py)]
+        MCP["MCP Server (src/mcp_server.py)"]
         Claude[Claude Desktop / AI Agent]
     end
 

@@ -32,7 +32,7 @@ graph TD
     
     E --> G[Calculate Base Risk Scores]
     F --> G
-    G --> H[Apply VM Tier Weights (Regex)]
+    G --> H["Apply VM Tier Weights (Regex)"]
     H --> I[Compute Composite Score]
     I --> J[Write to dr365v.metrics_risk_analysis_consolidated]
 ```

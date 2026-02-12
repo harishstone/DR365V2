@@ -30,16 +30,18 @@ graph TD
     A[Start] --> B[Fetch Restore History]
     B --> C{Hybrid Mode?}
     C -- Yes --> D[Run PowerShell Collector]
-    C -- No/Fail --> E[Run REST API Fallback]
+    C -- "No/Fail" --> E[Run REST API Fallback]
     
     A --> F[Fetch SureBackup Results]
     F --> G[Run get_surebackup_results.ps1]
     
-    D & E --> H[RTOAnalyzer]
+    D --> H[RTOAnalyzer]
+    E --> H
     H --> I[Calculate Percentiles & CI]
     
-    H & G --> J[RecoveryConfidenceCalculator]
-    J --> K[Blend Scores (70% History / 30% SureBackup)]
+    H --> J[RecoveryConfidenceCalculator]
+    G --> J
+    J --> K["Blend Scores (70% History / 30% SureBackup)"]
     K --> L[ConcurrentRestoreModeler]
     L --> M[Calculate Max Concurrent Capacity]
     M --> N[Write to PostgreSQL]

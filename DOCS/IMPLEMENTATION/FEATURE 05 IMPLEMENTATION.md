@@ -27,10 +27,11 @@ graph TD
     B --> C[Fetch F1-F4 Data Types]
     
     C --> D{Health Integrity Check}
-    D -- Stale/Missing --> E[Apply Confidence Penalty (e.g. 0.7x)]
+    D -- "Stale/Missing" --> E["Apply Confidence Penalty (e.g. 0.7x)"]
     D -- Fresh --> F[Confidence = 1.0]
     
-    E & F --> G[Calculate Base Risk Scores]
+    E --> G[Calculate Base Risk Scores]
+    F --> G
     G --> H[Apply VM Tier Weights (Regex)]
     H --> I[Compute Composite Score]
     I --> J[Write to dr365v.metrics_risk_analysis_consolidated]

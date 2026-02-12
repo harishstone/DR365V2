@@ -24,15 +24,15 @@ graph TD
     B --> C[Save Current State to DB]
     C --> D[Load 60-Day History]
     D --> E{Data Sufficiency Check}
-    E -- <14 Days --> F[Abort & Log Warning]
-    E -- >=14 Days --> G[Data Preprocessing]
+    E -- "<14 Days" --> F[Abort & Log Warning]
+    E -- ">=14 Days" --> G[Data Preprocessing]
     G --> H[Gap Interpolation & Outlier Removal]
     H --> I[Analyze Dedup Trends]
-    I --> J[Fit Models (Linear + Quadratic)]
+    I --> J["Fit Models (Linear + Quadratic)"]
     J --> K[Statistical Significance Test (p-value)]
-    K -- p < 0.05 --> L[Select Quadratic]
-    K -- p >= 0.05 --> M[Select Linear]
-    L --> N[Solve for Thresholds (80/90/100%)]
+    K -- "p < 0.05" --> L[Select Quadratic]
+    K -- "p >= 0.05" --> M[Select Linear]
+    L --> N["Solve for Thresholds (80/90/100%)"]
     M --> N
     N --> O[Save Forecast to DB]
 ```

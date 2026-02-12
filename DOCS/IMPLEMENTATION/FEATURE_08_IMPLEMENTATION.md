@@ -15,7 +15,7 @@
 ### 1.2 Data Flow Pipeline
 ```mermaid
 graph TD
-    A[Feature 7 Output] --> B[Input Validation (Pydantic)]
+    A[Feature 7 Output] --> B["Input Validation (Pydantic)"]
     B --> C[Check Low Confidence Guardrail]
     C -- Skip --> D[Return Unmodified]
     C -- Proceed --> E{Apply Business Context}
@@ -25,7 +25,10 @@ graph TD
     E --> H[Check Time of Day (Timezone Aware)]
     E --> I[Check Patch Status (Wazuh Indexer)]
     
-    F & G & H & I --> J[Calculate Adjusted Score]
+    F --> J[Calculate Adjusted Score]
+    G --> J
+    H --> J
+    I --> J
     J --> K[Return Contextualized Result]
 ```
 

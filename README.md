@@ -100,8 +100,14 @@ graph TD
         Claude[Claude Desktop / AI Agent]
     end
 
-    VBR -->|Raw Metrics| F1 & F2 & F3 & F4
-    F1 & F2 & F3 & F4 -->|Processed Data| DB
+    VBR -->|Raw Metrics| F1
+    VBR -->|Raw Metrics| F2
+    VBR -->|Raw Metrics| F3
+    VBR -->|Raw Metrics| F4
+    F1 -->|Processed Data| DB
+    F2 -->|Processed Data| DB
+    F3 -->|Processed Data| DB
+    F4 -->|Processed Data| DB
     DB --> F5 -->|Risk Scores| DB
     DB --> F6 -->|Guidance Plans| DB
     DB -->|Query Results| MCP

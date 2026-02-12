@@ -24,7 +24,7 @@ graph TD
     C -- Found --> E[Parallel Data Gathering]
     
     subgraph Wazuh Indexer
-        E --> F[Query FIM (Syscheck)]
+        E --> F["Query FIM (Syscheck)"]
         E --> G[Query Security Events]
     end
     
@@ -32,7 +32,9 @@ graph TD
         E --> H[Get Processes (Syscollector)]
     end
     
-    F & G & H --> I[Analysis Engine]
+    F --> I[Analysis Engine]
+    G --> I
+    H --> I
     I --> J{Scoring Logic}
     J --> K[Calculate Confidence]
     K --> L[Return Result JSON]

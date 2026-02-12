@@ -17,14 +17,15 @@
 graph TD
     A[Feature 7/8 Output] --> B[Calculate Time Window]
     B --> C[Query Primary Agent Events]
-    B --> D[Query Lateral Movement (All Agents)]
+    B --> D["Query Lateral Movement (All Agents)"]
     
     subgraph Wazuh Indexer
         C -- Pagination --> E[Fetch 10k+ Events]
         D -- Aggregation --> F[Correlation]
     end
     
-    E & F --> G[Merge & Deduplicate]
+    E --> G[Merge & Deduplicate]
+    F --> G
     G --> H[Enrich with MITRE IDs]
     H --> I[Sort Chronologically]
     I --> J[Return Timeline JSON]

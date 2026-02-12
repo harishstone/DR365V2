@@ -19,14 +19,15 @@ graph TD
     B --> C[Extract Agent IDs]
     
     subgraph Optimization
-        C --> D[Batched SCA Query (1 Request)]
-        C --> E[Batched Vuln Query (1 Request)]
+        C --> D["Batched SCA Query (1 Request)"]
+        C --> E["Batched Vuln Query (1 Request)"]
     end
     
     D --> F[Flatten Compliance Lists]
     E --> G[Filter CVSS >= 7.0]
     
-    F & G --> H[Aggregate per Host]
+    F --> H[Aggregate per Host]
+    G --> H
     H --> I[Calculate Risk Score]
     I --> J[Return Security Report]
 ```
